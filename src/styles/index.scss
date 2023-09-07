@@ -1,0 +1,19 @@
+@import 'variables';
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: system-ui;
+  background-image: url("../assets/images/container_bg.png");
+
+  #root {
+    height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+
+    main {
+      flex: 1;
+    }
+  }
+}

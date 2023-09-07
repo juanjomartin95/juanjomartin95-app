@@ -1,0 +1,18 @@
+footer {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 16px 0;
+  background: $blue;
+  color: white;
+  align-items: center;
+
+  a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  span {
+    font-size: 20px;
+  }
+}
