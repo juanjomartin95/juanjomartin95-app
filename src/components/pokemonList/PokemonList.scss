@@ -1,0 +1,12 @@
+.table-wrapper {
+  padding: 0 200px;
+  overflow: scroll;
+}
+
+.pagination-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+}

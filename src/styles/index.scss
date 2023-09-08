@@ -11,9 +11,6 @@ body {
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;
-
-    main {
-      flex: 1;
-    }
+    gap: 16px;
   }
 }

@@ -1,23 +1,24 @@
 import { useEffect, useMemo, useState } from 'react'
-import { pokemonBaseUrl } from '@/constants/endpoints.ts'
+import { OFFSET_MODIFIER, POKEMON_BASE_URL } from '@/constants/endpoints.ts'
+import { PokemonListInterface } from '@/models/pokemon.ts'
 
 export const usePokemonList = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState<PokemonListInterface>();
   const [error, setError] = useState();
-  const [loading, setLoading] = useState(false);
-  const [offset, setOffset] = useState(0);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [offset, setOffset] = useState<number>(0);
 
   const increaseOffset = (): void => {
-    setOffset(offset + 20)
+    setOffset(offset + OFFSET_MODIFIER)
   }
 
   const decreaseOffset = (): void => {
     if (offset > 0) {
-      setOffset(offset - 20)
+      setOffset(offset - OFFSET_MODIFIER)
     }
   }
 
-  const endpoint = useMemo(() => `${pokemonBaseUrl}?offset=${offset}&limit=20`, [offset])
+  const endpoint = useMemo(() => `${POKEMON_BASE_URL}?offset=${offset}&limit=20`, [offset])
 
   useEffect(() => {
     setLoading(true);
@@ -28,5 +29,5 @@ export const usePokemonList = () => {
       .finally(() => setLoading(false));
   }, [endpoint]);
 
-  return { data, error, loading, increaseOffset, decreaseOffset };
+  return { data, error, loading, increaseOffset, decreaseOffset, page: offset / OFFSET_MODIFIER + 1 };
 };
