@@ -2,6 +2,8 @@ import '@/components/pokemonCard/PokemonCard.scss'
 import { Button, Tag } from 'juanjomartin95-lib'
 import { Pokemon } from '@/models/pokemon.ts'
 import ArrowLeft from '@/assets/icons/ArrowLeft.tsx'
+import PokemonImage from '@/components/pokemonImage.tsx'
+import { useMemo } from 'react'
 
 interface PokemonCardProps {
   data: Pokemon,
@@ -9,8 +11,14 @@ interface PokemonCardProps {
 }
 
 const PokemonCard = ({ data, closeModal }: PokemonCardProps) => {
+  const colorClass = useMemo(() => {
+    return data?.types
+      .map(({ type }) => type.name)[0]
+      .toString()
+      .replace(',', ' ')
+  }, [data])
   return (
-    <section className="pokemon-card">
+    <section className={`pokemon-card ${colorClass}`}>
       <div className="info">
         <div className="close-info-wrapper">
           <Button onClick={closeModal} variant="text" className="close-button">
@@ -22,7 +30,7 @@ const PokemonCard = ({ data, closeModal }: PokemonCardProps) => {
           <div className="name">{data?.name}</div>
           <div className="types">{data?.types.map(({ type, slot }) => <Tag key={slot}>{type.name}</Tag>)}</div>
           <div className="image-wrapper">
-            <img src={data?.sprites.other.dream_world.front_default} alt="" className="pokemon-image" />
+            <PokemonImage url={data?.sprites.other.dream_world.front_default} className='pokemon-image'/>
           </div>
         </div>
       </div>

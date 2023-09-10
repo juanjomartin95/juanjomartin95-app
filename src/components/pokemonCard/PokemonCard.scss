@@ -2,7 +2,6 @@
   overflow: hidden;
   border-radius: 24px;
   box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.5);
-  background: #469d46; // temporal background color
 
   .info {
     padding: 24px 24px 0 24px;
@@ -20,6 +19,7 @@
         color: white;
         border: none;
         background: transparent;
+        cursor: pointer;
       }
       .order {
         font-size: 36px;
@@ -73,5 +73,52 @@
         font-weight: bold;
       }
     }
+  }
+
+  background: #af6836;
+  &.steel {
+    background: #8d8d8d;
+  }
+  &.dragon {
+    background: #c7883f;
+  }
+  &.fire {
+    background: #ea762f;
+  }
+  &.ground {
+    background: #da8742;
+  }
+  &.water {
+    background: #62a4d9;
+  }
+  &.grass {
+    background: #67af62;
+  }
+  &.ice {
+    background: #7abce3;
+  }
+  &.bug {
+    background: #53c592;
+  }
+  &.electric {
+    background: #ccbc51;
+  }
+  &.fairy {
+    background: #c752cc;
+  }
+  &.dark {
+    background: #464646;
+  }
+  &.rock {
+    background: #9a6340;
+  }
+  &.flying {
+    background: #519bc5;
+  }
+  &.ghost {
+    background: #b4b4b4;
+  }
+  &.psychic {
+    background: #9e53c9;
   }
 }
