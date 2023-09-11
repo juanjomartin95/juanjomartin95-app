@@ -5,7 +5,7 @@ import { FC } from 'react'
 
 const Header: FC = () => {
   return (
-    <header>
+    <header data-testid='header'>
       <img src={logo} alt={ALT_POKEMON_LOGO} />
     </header>
   )
