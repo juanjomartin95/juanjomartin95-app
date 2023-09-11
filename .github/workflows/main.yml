@@ -63,8 +63,8 @@ jobs:
         run: npm run build
 
   publish:
-    name: Publish package on NPM
-    needs: version
+    name: Publish on Vercel
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
