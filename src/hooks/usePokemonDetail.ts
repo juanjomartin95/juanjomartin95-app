@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { POKEMON_BASE_URL } from '@/constants/endpoints.ts'
 import { Pokemon } from '@/models/pokemon.ts'
+import getPokemonDetail from '@/services/getPokemonDetail.ts'
 
 interface PokemonDetailInterface {
   data: Pokemon | undefined;
@@ -19,15 +19,9 @@ export const usePokemonDetail = (): PokemonDetailInterface => {
   useEffect(() => {
     if (id) {
       setLoading(true)
-      const endpoint = `${POKEMON_BASE_URL}${id}`
-      fetch(endpoint, { method: 'GET' })
-        .then(async response => {
-          return await response.json()
-        })
-        .then(results => {
-          setData(results)
-        })
-        .catch(setError)
+      getPokemonDetail({ id })
+        .then(data => setData(data))
+        .catch(error => setError(error))
         .finally(() => setLoading(false))
     } else {
       setData(undefined)

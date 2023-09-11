@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from 'react'
-import { OFFSET_MODIFIER, POKEMON_BASE_URL } from '@/constants/endpoints.ts'
+import { useEffect, useState } from 'react'
+import { OFFSET_MODIFIER } from '@/constants/endpoints.ts'
 import { PokemonListInterface } from '@/models/pokemon.ts'
+import getPokemonList from '@/services/getPokemonList.ts'
 
 export const usePokemonList = () => {
   const [data, setData] = useState<PokemonListInterface>();
@@ -18,16 +19,13 @@ export const usePokemonList = () => {
     }
   }
 
-  const endpoint = useMemo(() => `${POKEMON_BASE_URL}?offset=${offset}&limit=20`, [offset])
-
   useEffect(() => {
     setLoading(true);
-    fetch(endpoint, {method: 'GET'})
-      .then(response => response.json())
-      .then(({results}) => setData(results))
-      .catch(setError)
-      .finally(() => setLoading(false));
-  }, [endpoint]);
+    getPokemonList({ offset })
+      .then(data => setData(data))
+      .catch(error => setError(error))
+      .finally(() => setLoading(false))
+  }, [offset]);
 
   return { data, error, loading, increaseOffset, decreaseOffset, page: offset / OFFSET_MODIFIER + 1 };
 };
