@@ -1,6 +1,7 @@
 import '@/components/footer/Footer.scss'
+import { FC } from 'react'
 
-const Footer = () => {
+const Footer: FC = () => {
   return (
     <footer>
       <a href='https://github.com/juanjomartin95/juanjomartin95-app' target='_blank'>Github Repo</a>

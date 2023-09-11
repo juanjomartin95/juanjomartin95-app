@@ -11,7 +11,6 @@ import { usePokemonDetail } from '@/hooks/usePokemonDetail.ts'
 import LoadingSpinner from '@/components/loadingSpinner/LoadingSpinner.tsx'
 
 function App() {
-  console.log('render app')
   const { data: pokemonDetails, loading, setPokemonId, id } = usePokemonDetail()
   return (
     <>

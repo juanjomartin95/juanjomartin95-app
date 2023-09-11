@@ -3,14 +3,14 @@ import { Button, Tag } from 'juanjomartin95-lib'
 import { Pokemon } from '@/models/pokemon.ts'
 import ArrowLeft from '@/assets/icons/ArrowLeft.tsx'
 import PokemonImage from '@/components/pokemonImage.tsx'
-import { useMemo } from 'react'
+import { FC, useMemo } from 'react'
 
 interface PokemonCardProps {
   data: Pokemon,
   closeModal: () => void,
 }
 
-const PokemonCard = ({ data, closeModal }: PokemonCardProps) => {
+const PokemonCard: FC<PokemonCardProps> = ({ data, closeModal }) => {
   const colorClass = useMemo(() => {
     return data?.types
       .map(({ type }) => type.name)[0]

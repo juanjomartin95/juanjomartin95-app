@@ -3,12 +3,13 @@ import { usePokemonList } from '@/hooks/usePokemonList.ts'
 import { BUTTON_NEXT, BUTTON_PREV, BUTTON_SEE_MORE, TABLE_ACTIONS, TABLE_POKEMON_NAME } from '@/constants/texts.ts'
 import '@/components/pokemonList/PokemonList.scss'
 import { PokemonListInterface } from '@/models/pokemon.ts'
+import { FC } from 'react'
 
 interface PokemonListProps {
   setSelectedPokemon: (name: PokemonListInterface['name']) => void
 }
 
-const PokemonList = ({setSelectedPokemon}: PokemonListProps) => {
+const PokemonList: FC<PokemonListProps> = ({setSelectedPokemon}) => {
   const { data: listData, increaseOffset, decreaseOffset, page } = usePokemonList()
   const tableColumns: ColumnDefs = [
     {
