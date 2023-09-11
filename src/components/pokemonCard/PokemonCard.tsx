@@ -2,7 +2,7 @@ import '@/components/pokemonCard/PokemonCard.scss'
 import { Button, Tag } from 'juanjomartin95-lib'
 import { Pokemon } from '@/models/pokemon.ts'
 import ArrowLeft from '@/assets/icons/ArrowLeft.tsx'
-import PokemonImage from '@/components/pokemonImage.tsx'
+import ImageFromUrl from '@/components/imageFromUrl/ImageFromUrl.tsx'
 import { FC, useMemo } from 'react'
 
 interface PokemonCardProps {
@@ -30,7 +30,7 @@ const PokemonCard: FC<PokemonCardProps> = ({ data, closeModal }) => {
           <div className="name">{data?.name}</div>
           <div className="types">{data?.types.map(({ type, slot }) => <Tag key={slot}>{type.name}</Tag>)}</div>
           <div className="image-wrapper">
-            <PokemonImage url={data?.sprites.other.dream_world.front_default} className='pokemon-image'/>
+            <ImageFromUrl src={data?.sprites.other.dream_world.front_default} className='pokemon-image' alt='Pokemon image'/>
           </div>
         </div>
       </div>

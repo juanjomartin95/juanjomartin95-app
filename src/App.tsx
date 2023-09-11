@@ -2,16 +2,16 @@ import Header from '@/components/header/Header.tsx'
 import Footer from '@/components/footer/Footer.tsx'
 import PokemonList from '@/components/pokemonList/PokemonList.tsx'
 import PokemonCard from '@/components/pokemonCard/PokemonCard.tsx'
+import LoadingSpinner from '@/components/loadingSpinner/LoadingSpinner.tsx'
 
 import { PokemonListInterface } from '@/models/pokemon.ts'
 
+import { usePokemonDetail } from '@/hooks/usePokemonDetail.ts'
+
 import '@/App.scss'
 
-import { usePokemonDetail } from '@/hooks/usePokemonDetail.ts'
-import LoadingSpinner from '@/components/loadingSpinner/LoadingSpinner.tsx'
-
-function App() {
-  const { data: pokemonDetails, loading, setPokemonId, id } = usePokemonDetail()
+const App = () => {
+  const { data: pokemonDetails, loading, setId, id } = usePokemonDetail()
   return (
     <>
       <Header />
@@ -24,14 +24,14 @@ function App() {
               <PokemonCard
                 data={pokemonDetails}
                 closeModal={() => {
-                  setPokemonId(null)
+                  setId(undefined)
                 }}
               />
             )
           )}
         </div>
       )}
-      <PokemonList setSelectedPokemon={(pokemonName: PokemonListInterface['name']) => setPokemonId(pokemonName)} />
+      <PokemonList setSelectedPokemon={(pokemonName: PokemonListInterface['name']) => setId(pokemonName)} />
       <Footer />
     </>
   )

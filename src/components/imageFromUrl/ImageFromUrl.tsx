@@ -1,20 +1,21 @@
 import { FC, useState } from 'react'
 import LoadingSpinner from '@/components/loadingSpinner/LoadingSpinner.tsx'
 
-interface PokemonImageProps {
-  url: string
+interface ImageProps {
+  src: string
   className?: string
+  alt?: string
 }
 
-const PokemonImage: FC<PokemonImageProps> = ({ url, className }) => {
+const ImageFromUrl: FC<ImageProps> = ({ ...props }) => {
   const [loaded, setLoaded] = useState(false)
   const image = new Image()
-  image.src = url
+  image.src = props.src
   image.onload = () => {
     setLoaded(true)
   }
 
-  return loaded ? <img src={url} alt="Pokemon image" className={className} /> : <LoadingSpinner />
+  return loaded ? <img {...props} /> : <LoadingSpinner />
 }
 
-export default PokemonImage
+export default ImageFromUrl
