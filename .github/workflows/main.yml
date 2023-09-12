@@ -62,8 +62,8 @@ jobs:
       - name: Build project
         run: npm run build
 
-  publish:
-    name: Publish on Vercel
+  version_publish:
+    name: Update version and publish on Vercel
     needs: build
     runs-on: ubuntu-latest
     steps:
